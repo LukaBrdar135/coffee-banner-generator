@@ -1,0 +1,21 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0px 40px 0px;
+}
+
+.welcome__title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.welcome__description {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.welcome__action {
+    font-size: 20px;
+    font-weight: 500;
+}

@@ -9,7 +9,7 @@ export const BannerPreview: React.FC = () => {
         <div className="preview">
             <h4 className="preview__title">Preview:</h4>
             <div className="preview__holder">
-                <div className="preview__banner" style={{ width: bannerWidth }}>
+                <div className="preview__banner" style={{ width: bannerWidth }} id="banner-preview">
                     <div className="preview__banner__title">{bannerTitle}</div>
                     <div className="preview__banner__content">
                         <div className="preiview__banner__content__description">{bannerDescription}</div>

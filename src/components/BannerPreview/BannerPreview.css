@@ -1,6 +1,6 @@
 .preview {
     position: sticky;
-    width: 100;
+    width: 100%;
     top: 40px;
     box-shadow: 0px 1px 40px 0px rgba(66, 66, 67, 0.13);
     border-radius: 8px;

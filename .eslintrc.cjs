@@ -28,7 +28,15 @@ module.exports = {
     },
     plugins: ['react', 'prettier', '@typescript-eslint'],
     rules: {
-        // Customize rules as per your project's needs
+        'no-unused-vars': 'warn',
+        '@typescript-eslint/no-unused-vars': [
+            'warn',
+            {
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+                caughtErrorsIgnorePattern: '^_',
+            },
+        ],
     },
     settings: {
         react: {

@@ -31,12 +31,10 @@ const StepOne: React.FC = () => {
 
         if (!hotCoffee.length || !coldCoffee.length) {
             setIsLoading(true);
-            console.log('here');
 
             fetch(value === CoffeeType.HOT ? hotCoffeeApi : coldCoffeeApi)
                 .then((res) => res.json())
                 .then((data: CoffeeDataType[]) => {
-                    console.log(data);
                     if (value === CoffeeType.HOT) {
                         setHotCoffee(data);
                     } else {

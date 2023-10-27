@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import { CoffeeDataType } from '../constants/api';
 import { CoffeeType, OptionsType } from '../components/StepOne/types';
 import { SingleValue } from 'react-select';
+import { CoffeeDataType } from '../constants/api';
 
 type StepStore = {
     currentStep: number;

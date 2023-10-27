@@ -1,0 +1,16 @@
+.steps-and-preview {
+    display: flex;
+    gap: 80px;
+    justify-content: space-between;
+}
+
+.steps-and-preview__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    width: 60%;
+}
+
+.steps-and-preview__preview {
+    width: 40%;
+}

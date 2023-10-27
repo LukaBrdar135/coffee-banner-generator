@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './StepOne.css';
 import Card from '../UI/Card/Card';
 import { CoffeeType, OptionsType } from './types';
-import Select, { SingleValue } from 'react-select';
+import Select, { ActionMeta, SingleValue } from 'react-select';
 import { CoffeeDataType, coldCoffeeApi, hotCoffeeApi } from '../../constants/api';
 import Button from '../UI/Button/Button';
 import { mapOptions } from './utils';
@@ -57,16 +57,18 @@ const StepOne: React.FC = () => {
         }
     };
 
-    const onSelectChange = (newValue: SingleValue<OptionsType>) => {
+    const onSelectChange = (newValue: SingleValue<OptionsType>, actionMeta: ActionMeta<OptionsType>) => {
+        if (actionMeta.action === 'clear') {
+            setSelectedCoffee(null);
+            setBannerTitle('');
+            setBannerDescription('');
+            return;
+        }
+
         if (newValue) {
             setSelectedCoffee(newValue);
-
-            const coffees = coffeeType === CoffeeType.HOT ? hotCoffee : coldCoffee;
-            const coffeeItem = coffees.find((item) => item.id === parseInt(newValue.value));
-            if (coffeeItem) {
-                setBannerTitle(coffeeItem.title);
-                setBannerDescription(coffeeItem.description);
-            }
+            setBannerTitle(newValue.value.title);
+            setBannerDescription(newValue.value.description);
         }
     };
 

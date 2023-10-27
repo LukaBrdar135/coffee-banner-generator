@@ -10,12 +10,16 @@ type StepStore = {
     coldCoffee: CoffeeDataType[];
     selectedCoffee: SingleValue<OptionsType> | null;
     bannerWidth: string;
+    bannerTitle: string;
+    bannerDescription: string;
     setCurrentStep: (step: number) => void;
     setCoffeeType: (coffeeType: CoffeeType | null) => void;
     setHotCoffee: (hotCoffeeData: CoffeeDataType[]) => void;
     setColdCoffee: (coldCoffeeData: CoffeeDataType[]) => void;
     setSelectedCoffee: (selectedCoffee: SingleValue<OptionsType> | null) => void;
     setBannnerWidth: (bannerWidth: string) => void;
+    setBannerTitle: (bannerTitle: string) => void;
+    setBannerDescription: (bannerDescription: string) => void;
 };
 
 export const useStepStore = create<StepStore>((set) => ({
@@ -25,6 +29,8 @@ export const useStepStore = create<StepStore>((set) => ({
     coldCoffee: [],
     selectedCoffee: null,
     bannerWidth: '',
+    bannerTitle: '',
+    bannerDescription: '',
     setCurrentStep: (step: number) => {
         set({ currentStep: step });
     },
@@ -42,5 +48,11 @@ export const useStepStore = create<StepStore>((set) => ({
     },
     setBannnerWidth: (bannerWidth: string) => {
         set({ bannerWidth });
+    },
+    setBannerTitle: (bannerTitle: string) => {
+        set({ bannerTitle });
+    },
+    setBannerDescription: (bannerDescription: string) => {
+        set({ bannerDescription });
     },
 }));

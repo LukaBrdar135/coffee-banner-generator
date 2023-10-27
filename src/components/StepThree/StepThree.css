@@ -1,0 +1,21 @@
+.customize {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.customize__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.customize__form__label {
+    color: #767676;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.customize__button-holder {
+    display: flex;
+}

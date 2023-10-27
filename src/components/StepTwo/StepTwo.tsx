@@ -66,7 +66,7 @@ const StepTwo: React.FC = () => {
                         px
                     </div>
                 </div>
-                <Button type="button" disabled={isDisabled} onClick={onClickHanlder}>
+                <Button type="button" className="right" disabled={isDisabled} onClick={onClickHanlder}>
                     Next step
                 </Button>
             </div>

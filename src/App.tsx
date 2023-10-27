@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import StepOne from './components/StepOne/StepOne';
 import Welcome from './components/Welcome/Welcome';
 import StepTwo from './components/StepTwo/StepTwo';
+import StepThree from './components/StepThree/StepThree';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Welcome />
                 <StepOne />
                 <StepTwo />
+                <StepThree />
             </div>
         </div>
     );

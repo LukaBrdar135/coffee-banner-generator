@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './StepOne.css';
 import Card from '../UI/Card/Card';
 import { CoffeeType, OptionsType } from './types';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import { CoffeeDataType, coldCoffeeApi, hotCoffeeApi } from '../../constants/api';
 import Button from '../UI/Button/Button';
 import { mapOptions } from './utils';
@@ -11,10 +11,21 @@ import { useStepStore } from '../../store/useStepStore';
 const StepOne: React.FC = () => {
     const [options, setOptions] = useState<OptionsType[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const { coffeeType, setCoffeeType, hotCoffee, setHotCoffee, coldCoffee, setColdCoffee, selectedCoffee, setSelectedCoffee, setCurrentStep } =
-        useStepStore();
+    const {
+        coffeeType,
+        setCoffeeType,
+        hotCoffee,
+        setHotCoffee,
+        coldCoffee,
+        setColdCoffee,
+        selectedCoffee,
+        setSelectedCoffee,
+        setCurrentStep,
+        setBannerTitle,
+        setBannerDescription,
+    } = useStepStore();
 
-    const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onRadioChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value as CoffeeType;
         setCoffeeType(value);
 
@@ -32,6 +43,9 @@ const StepOne: React.FC = () => {
                         setColdCoffee(data);
                     }
 
+                    setBannerTitle(data[0].title);
+                    setBannerDescription(data[0].description);
+
                     const mappedOptions = mapOptions(data);
                     setOptions(mappedOptions);
                     setSelectedCoffee(mappedOptions[0]);
@@ -45,6 +59,19 @@ const StepOne: React.FC = () => {
         }
     };
 
+    const onSelectChange = (newValue: SingleValue<OptionsType>) => {
+        if (newValue) {
+            setSelectedCoffee(newValue);
+
+            const coffees = coffeeType === CoffeeType.HOT ? hotCoffee : coldCoffee;
+            const coffeeItem = coffees.find((item) => item.id === parseInt(newValue.value));
+            if (coffeeItem) {
+                setBannerTitle(coffeeItem.title);
+                setBannerDescription(coffeeItem.description);
+            }
+        }
+    };
+
     const onClickHanlder = (_: React.MouseEvent) => {
         setCurrentStep(2);
     };
@@ -54,11 +81,11 @@ const StepOne: React.FC = () => {
             <div className="coffee-type">
                 <div className="coffee-type__radio">
                     <label className="coffee-type__label">
-                        <input type="radio" value={CoffeeType.HOT} checked={coffeeType === CoffeeType.HOT} onChange={onChangeHandler} />
+                        <input type="radio" value={CoffeeType.HOT} checked={coffeeType === CoffeeType.HOT} onChange={onRadioChangeHandler} />
                         Hot cofee
                     </label>
                     <label className="coffee-type__label">
-                        <input type="radio" value={CoffeeType.COLD} checked={coffeeType === CoffeeType.COLD} onChange={onChangeHandler} />
+                        <input type="radio" value={CoffeeType.COLD} checked={coffeeType === CoffeeType.COLD} onChange={onRadioChangeHandler} />
                         Cold cofee
                     </label>
                 </div>
@@ -69,10 +96,10 @@ const StepOne: React.FC = () => {
                     placeholder={isLoading ? 'Loading...' : 'Select coffee'}
                     name="color"
                     value={selectedCoffee}
-                    onChange={(newValue) => setSelectedCoffee(newValue)}
+                    onChange={onSelectChange}
                     options={options}
                 />
-                <Button type="button" disabled={!selectedCoffee} onClick={onClickHanlder}>
+                <Button type="button" className="right" disabled={!selectedCoffee} onClick={onClickHanlder}>
                     Next step
                 </Button>
             </div>

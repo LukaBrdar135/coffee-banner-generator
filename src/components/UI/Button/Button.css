@@ -8,7 +8,9 @@
     font-weight: 500;
     width: fit-content;
     position: relative;
-    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .button:hover {
@@ -19,4 +21,18 @@
 .button:disabled {
     cursor: not-allowed;
     background-color: #d3d3d3;
+}
+
+.button-text {
+    background-color: transparent;
+    color: #2f2f2f;
+    padding: 12px 0px;
+}
+
+.button-text:hover {
+    background: transparent;
+}
+
+.button.right {
+    margin-left: auto;
 }

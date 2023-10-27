@@ -9,14 +9,14 @@ import { mapOptions } from './utils';
 import { useStepStore } from '../../store/useStepStore';
 
 const StepOne: React.FC = () => {
-    const [radioValue, setRadioValue] = useState<CoffeeType>();
     const [options, setOptions] = useState<OptionsType[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const { hotCoffee, setHotCoffee, coldCoffee, setColdCoffee, selectedCoffee, setSelectedCoffee, setCurrentStep } = useStepStore();
+    const { coffeeType, setCoffeeType, hotCoffee, setHotCoffee, coldCoffee, setColdCoffee, selectedCoffee, setSelectedCoffee, setCurrentStep } =
+        useStepStore();
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value as CoffeeType;
-        setRadioValue(value);
+        setCoffeeType(value);
 
         if (!hotCoffee.length || !coldCoffee.length) {
             setIsLoading(true);
@@ -54,11 +54,11 @@ const StepOne: React.FC = () => {
             <div className="coffee-type">
                 <div className="coffee-type__radio">
                     <label className="coffee-type__label">
-                        <input type="radio" value={CoffeeType.HOT} checked={radioValue === CoffeeType.HOT} onChange={onChangeHandler} />
+                        <input type="radio" value={CoffeeType.HOT} checked={coffeeType === CoffeeType.HOT} onChange={onChangeHandler} />
                         Hot cofee
                     </label>
                     <label className="coffee-type__label">
-                        <input type="radio" value={CoffeeType.COLD} checked={radioValue === CoffeeType.COLD} onChange={onChangeHandler} />
+                        <input type="radio" value={CoffeeType.COLD} checked={coffeeType === CoffeeType.COLD} onChange={onChangeHandler} />
                         Cold cofee
                     </label>
                 </div>

@@ -1,26 +1,35 @@
 import { create } from 'zustand';
 import { CoffeeDataType } from '../constants/api';
-import { OptionsType } from '../components/StepOne/types';
+import { CoffeeType, OptionsType } from '../components/StepOne/types';
 import { SingleValue } from 'react-select';
 
 type StepStore = {
     currentStep: number;
+    coffeeType: CoffeeType | null;
     hotCoffee: CoffeeDataType[];
     coldCoffee: CoffeeDataType[];
     selectedCoffee: SingleValue<OptionsType> | null;
+    bannerWidth: string;
     setCurrentStep: (step: number) => void;
+    setCoffeeType: (coffeeType: CoffeeType | null) => void;
     setHotCoffee: (hotCoffeeData: CoffeeDataType[]) => void;
     setColdCoffee: (coldCoffeeData: CoffeeDataType[]) => void;
     setSelectedCoffee: (selectedCoffee: SingleValue<OptionsType> | null) => void;
+    setBannnerWidth: (bannerWidth: string) => void;
 };
 
 export const useStepStore = create<StepStore>((set) => ({
     currentStep: 1,
+    coffeeType: null,
     hotCoffee: [],
     coldCoffee: [],
     selectedCoffee: null,
+    bannerWidth: '',
     setCurrentStep: (step: number) => {
         set({ currentStep: step });
+    },
+    setCoffeeType: (coffeeType: CoffeeType | null) => {
+        set({ coffeeType });
     },
     setHotCoffee: (hotCoffeeData: CoffeeDataType[]) => {
         set({ hotCoffee: hotCoffeeData });
@@ -30,5 +39,8 @@ export const useStepStore = create<StepStore>((set) => ({
     },
     setSelectedCoffee: (selectedCoffee: SingleValue<OptionsType> | null) => {
         set({ selectedCoffee });
+    },
+    setBannnerWidth: (bannerWidth: string) => {
+        set({ bannerWidth });
     },
 }));

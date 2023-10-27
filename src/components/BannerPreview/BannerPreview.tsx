@@ -12,7 +12,7 @@ export const BannerPreview: React.FC = () => {
                 <div className="preview__banner" style={{ width: bannerWidth }} id="banner-preview">
                     <div className="preview__banner__title">{bannerTitle}</div>
                     <div className="preview__banner__content">
-                        <div className="preiview__banner__content__description">{bannerDescription}</div>
+                        <div className="preview__banner__content__description">{bannerDescription}</div>
                         <div
                             className="preview__banner__content__image"
                             style={{ background: `url(${selectedCoffee?.value.image}) no-repeat center /cover` }}
@@ -20,7 +20,7 @@ export const BannerPreview: React.FC = () => {
                     </div>
                     <div className="preview__banner__ingeredients">
                         {selectedCoffee?.value.ingredients.map((ingredient: string) => (
-                            <div key={ingredient} className="ingredient">
+                            <div key={ingredient} className="preview__banner__ingeredients__ingredient ">
                                 {ingredient}
                             </div>
                         ))}

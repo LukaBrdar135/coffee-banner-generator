@@ -29,9 +29,7 @@ const StepOne: React.FC = () => {
         const value = event.target.value as CoffeeType;
         setCoffeeType(value);
 
-        if (!hotCoffee.length || !coldCoffee.length) {
-            setIsLoading(true);
-
+        const fetchData = () => {
             fetch(value === CoffeeType.HOT ? hotCoffeeApi : coldCoffeeApi)
                 .then((res) => res.json())
                 .then((data: CoffeeDataType[]) => {
@@ -50,6 +48,16 @@ const StepOne: React.FC = () => {
                 })
                 .catch((err) => console.log(err))
                 .finally(() => setIsLoading(false));
+        };
+
+        if ((value as CoffeeType) === CoffeeType.HOT && !hotCoffee.length) {
+            setIsLoading(true);
+            setSelectedCoffee(null);
+            fetchData();
+        } else if ((value as CoffeeType) === CoffeeType.COLD && !coldCoffee.length) {
+            setIsLoading(true);
+            setSelectedCoffee(null);
+            fetchData();
         } else {
             const mappedOptions = mapOptions(value === CoffeeType.HOT ? hotCoffee : coldCoffee);
             setOptions(mappedOptions);

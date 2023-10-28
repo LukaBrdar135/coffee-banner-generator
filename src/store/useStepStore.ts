@@ -20,9 +20,10 @@ type StepStore = {
     setBannnerWidth: (bannerWidth: string) => void;
     setBannerTitle: (bannerTitle: string) => void;
     setBannerDescription: (bannerDescription: string) => void;
+    reset: () => void;
 };
 
-export const useStepStore = create<StepStore>((set) => ({
+const defaultState = {
     currentStep: 1,
     coffeeType: null,
     hotCoffee: [],
@@ -31,6 +32,10 @@ export const useStepStore = create<StepStore>((set) => ({
     bannerWidth: '',
     bannerTitle: '',
     bannerDescription: '',
+};
+
+export const useStepStore = create<StepStore>((set, get) => ({
+    ...defaultState,
     setCurrentStep: (step: number) => {
         set({ currentStep: step });
     },
@@ -54,5 +59,8 @@ export const useStepStore = create<StepStore>((set) => ({
     },
     setBannerDescription: (bannerDescription: string) => {
         set({ bannerDescription });
+    },
+    reset: () => {
+        set({ ...defaultState, hotCoffee: get().hotCoffee, coldCoffee: get().coldCoffee });
     },
 }));

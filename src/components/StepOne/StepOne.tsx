@@ -54,6 +54,8 @@ const StepOne: React.FC = () => {
             const mappedOptions = mapOptions(value === CoffeeType.HOT ? hotCoffee : coldCoffee);
             setOptions(mappedOptions);
             setSelectedCoffee(mappedOptions[0]);
+            setBannerTitle(mappedOptions[0].value.title);
+            setBannerDescription(mappedOptions[0].value.description);
         }
     };
 

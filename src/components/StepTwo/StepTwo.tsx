@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './StepTwo.css';
 import { useStepStore } from '../../store/useStepStore';
 import Card from '../UI/Card/Card';
@@ -36,6 +36,15 @@ const StepTwo: React.FC = () => {
     const onClickHanlder = (_: React.MouseEvent) => {
         setCurrentStep(3);
     };
+
+    // Used for reseting the form since it doesn't use store for values
+    useEffect(() => {
+        if (currentStep === 1) {
+            setRadioValue('');
+            setCustomWidth('');
+            setIsDisabled(true);
+        }
+    }, [currentStep]);
 
     return (
         <Card className={`${currentStep < 2 ? 'is-disabled' : ''}`} title="2. Choose your width">

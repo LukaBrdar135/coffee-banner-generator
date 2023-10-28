@@ -11,7 +11,7 @@ import { useModal } from '../../hooks/useModal';
 import GeneratedCodeModal from '../GeneratedCodeModal/GeneratedCodeModal';
 
 const StepThree: React.FC = () => {
-    const { currentStep, bannerTitle, bannerDescription, setBannerDescription, setBannerTitle } = useStepStore();
+    const { currentStep, bannerTitle, bannerDescription, setBannerDescription, setBannerTitle, reset } = useStepStore();
     const { isOpen, openModal, onClose } = useModal();
 
     return (
@@ -37,7 +37,7 @@ const StepThree: React.FC = () => {
                         </div>
                     </div>
                     <div className="customize__button-holder">
-                        <Button type="button" variant="text" icon={arrowBack}>
+                        <Button type="button" variant="text" icon={arrowBack} onClick={reset}>
                             Start over
                         </Button>
                         <Button type="button" className="right" icon={code} iconPosition="before" disabled={currentStep < 3} onClick={openModal}>

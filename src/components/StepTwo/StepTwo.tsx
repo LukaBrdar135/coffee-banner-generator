@@ -23,9 +23,8 @@ const StepTwo: React.FC = () => {
     };
 
     const onInputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // TODO: Add field validation
         setCustomWidth(event.target.value);
-        setBannnerWidth(event.target.value + 'px');
+        setBannnerWidth(Math.abs(parseInt(event.target.value)) + 'px');
         if (event.target.value !== '') {
             setIsDisabled(false);
         } else {

@@ -57,15 +57,26 @@ export const getGeneratedCode = (
 </style>
 
 <div class="banner">
-   <div class="title">
-       ${bannerTitle}
-   </div>
+   <div class="title">${bannerTitle}</div>
    <div class="description">
-       <p class="description__text">${bannerDescription}</p>
+        <p class="description__text">
+            ${addNewlinesEvery80Characters(bannerDescription).trim()}
+        </p>
        ${showImage ? '<div class="description__image"></div>' : ''}
    </div>
    <div class="ingredients">
        ${selectedCoffee?.value.ingredients.map((ingredient: string) => `<div class="ingredient">${ingredient}</div>`).join('\n\t\t')}
    </div>
 </div>`;
+};
+
+const addNewlinesEvery80Characters = (input: string) => {
+    const maxLength = 80;
+    let result = '';
+    for (let i = 0; i < input.length; i += maxLength) {
+        const substring = input.slice(i, i + maxLength);
+        const cleanedSubstring = substring.replace(/\n +/g, '\n');
+        result += cleanedSubstring.trim() + '\n\t\t\t';
+    }
+    return result;
 };

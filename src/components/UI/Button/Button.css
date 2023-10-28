@@ -38,8 +38,8 @@
 }
 
 @media (max-width: 480px) {
-    .button.right {
-        margin-left: 50%;
-        transform: translateX(-50%);
+    .button {
+        width: 100%;
+        justify-content: center;
     }
 }

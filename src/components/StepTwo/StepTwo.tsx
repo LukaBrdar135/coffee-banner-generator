@@ -51,7 +51,7 @@ const StepTwo: React.FC = () => {
     }, [currentStep]);
 
     return (
-        <Card className={`${currentStep < 2 ? 'is-disabled' : ''}`} title="2. Choose your width">
+        <Card title="2. Choose your width">
             <div className="choosing-width">
                 <div className="choosing-width__preset">
                     {bannerWidths.map((bannerWidth) => (

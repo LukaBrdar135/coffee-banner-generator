@@ -11,12 +11,12 @@ import { useModal } from '../../hooks/useModal';
 import GeneratedCodeModal from '../GeneratedCodeModal/GeneratedCodeModal';
 
 const StepThree: React.FC = () => {
-    const { currentStep, bannerTitle, bannerDescription, setBannerDescription, setBannerTitle, reset } = useStepStore();
+    const { bannerTitle, bannerDescription, setBannerDescription, setBannerTitle, reset } = useStepStore();
     const { isOpen, openModal, onClose } = useModal();
 
     return (
         <>
-            <Card className={`${currentStep < 3 ? 'is-disabled' : ''}`} title="3. Customize title and description">
+            <Card title="3. Customize title and description">
                 <div className="customize">
                     <div className="customize__form">
                         <div>
@@ -40,7 +40,7 @@ const StepThree: React.FC = () => {
                         <Button type="button" variant="text" icon={arrowBack} onClick={reset}>
                             Start over
                         </Button>
-                        <Button type="button" className="right" icon={code} iconPosition="before" disabled={currentStep < 3} onClick={openModal}>
+                        <Button type="button" className="right" icon={code} iconPosition="before" onClick={openModal}>
                             View and copy code
                         </Button>
                     </div>

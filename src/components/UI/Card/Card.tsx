@@ -9,7 +9,7 @@ type Props = {
 
 const Card: React.FC<Props> = ({ title, children, className }) => {
     return (
-        <div className={`card ${className}`}>
+        <div className={`card ${className ?? ''}`}>
             <div className="card__title">{title}</div>
             <div className="card__content">{children}</div>
         </div>

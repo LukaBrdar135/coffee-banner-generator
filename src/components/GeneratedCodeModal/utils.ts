@@ -30,6 +30,10 @@ export const getGeneratedCode = (
        padding: 20px;
    }
 
+   .description p{
+        margin: 0;
+    }
+
    .description__text{
        width: ${showImage ? '70%' : '100%'};
    }

@@ -36,7 +36,7 @@
     font-size: 18px;
     font-weight: 500;
     padding: 12px 24px;
-    height: 42px;
+    height: fit-content;
 }
 
 .preview__banner__content {

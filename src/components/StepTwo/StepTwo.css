@@ -48,3 +48,24 @@
     align-items: center;
     gap: 10px;
 }
+
+@media (max-width: 480px) {
+    .choosing-width__preset {
+        flex-direction: column;
+    }
+
+    .choosing-width__preset__label {
+        height: 50px;
+        max-width: 100%;
+    }
+
+    .choosing-width__custom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .choosing-width__show-image {
+        margin-top: 10px;
+    }
+}

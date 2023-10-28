@@ -6,17 +6,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.header__logo {
-    padding-left: 20px;
+    padding: 0px 20px;
 }
 
 .header__title {
     color: #ffffff;
-    padding-right: 20px;
     font-size: 28px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
+}
+
+@media (max-width: 768px) {
+    .header {
+        gap: 20px;
+    }
+
+    .header__logo img {
+        width: 200px;
+    }
+
+    .header__title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header__title {
+        text-align: center;
+    }
 }

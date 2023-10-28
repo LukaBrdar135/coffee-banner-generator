@@ -19,3 +19,11 @@
 .customize__button-holder {
     display: flex;
 }
+
+@media (max-width: 480px) {
+    .customize__button-holder {
+        flex-direction: column-reverse;
+        gap: 10px;
+        align-items: center;
+    }
+}

@@ -36,3 +36,10 @@
 .button.right {
     margin-left: auto;
 }
+
+@media (max-width: 480px) {
+    .button.right {
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+}

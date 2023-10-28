@@ -14,3 +14,17 @@
 .steps-and-preview__preview {
     width: calc(40% - 44px);
 }
+
+@media (max-width: 992px) {
+    .steps-and-preview {
+        flex-direction: column;
+    }
+
+    .steps-and-preview__steps {
+        width: 100%;
+    }
+
+    .steps-and-preview__preview {
+        width: 100%;
+    }
+}

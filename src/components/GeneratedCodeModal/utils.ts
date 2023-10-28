@@ -1,7 +1,13 @@
 import { SingleValue } from 'react-select';
 import { OptionsType } from '../StepOne/types';
 
-export const getGeneratedCode = (selectedCoffee: SingleValue<OptionsType>, bannerWidth: string, bannerTitle: string, bannerDescription: string) => {
+export const getGeneratedCode = (
+    selectedCoffee: SingleValue<OptionsType>,
+    bannerWidth: string,
+    bannerTitle: string,
+    bannerDescription: string,
+    showImage: boolean
+) => {
     return `<style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
 
@@ -25,12 +31,12 @@ export const getGeneratedCode = (selectedCoffee: SingleValue<OptionsType>, banne
    }
 
    .description__text{
-       width: 60%
+       width: ${showImage ? '70%' : '100%'};
    }
 
    .description__image {
        background: url(${selectedCoffee?.value.image}) no-repeat center /cover;
-       width: 40%;
+       width: 30%;
    }
 
    .ingredients {
@@ -56,7 +62,7 @@ export const getGeneratedCode = (selectedCoffee: SingleValue<OptionsType>, banne
    </div>
    <div class="description">
        <p class="description__text">${bannerDescription}</p>
-       <div class="description__image"></div>
+       ${showImage ? '<div class="description__image"></div>' : ''}
    </div>
    <div class="ingredients">
        ${selectedCoffee?.value.ingredients.map((ingredient: string) => `<div class="ingredient">${ingredient}</div>`).join('\n\t\t')}

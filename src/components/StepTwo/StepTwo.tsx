@@ -10,7 +10,7 @@ const StepTwo: React.FC = () => {
     const [radioValue, setRadioValue] = useState<string>('');
     const [customWidth, setCustomWidth] = useState<string>('');
     const [isDisabled, setIsDisabled] = useState(true);
-    const { currentStep, setBannnerWidth, setCurrentStep } = useStepStore();
+    const { currentStep, setBannnerWidth, setCurrentStep, showImage, setShowImage } = useStepStore();
 
     const onRadioChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRadioValue(event.target.value);
@@ -35,6 +35,10 @@ const StepTwo: React.FC = () => {
 
     const onClickHanlder = (_: React.MouseEvent) => {
         setCurrentStep(3);
+    };
+
+    const onCheckHandler = (_: React.ChangeEvent<HTMLInputElement>) => {
+        setShowImage(!showImage);
     };
 
     // Used for reseting the form since it doesn't use store for values
@@ -74,6 +78,12 @@ const StepTwo: React.FC = () => {
                         />
                         px
                     </div>
+                </div>
+                <div className="choosing-width__show-image">
+                    <label className="choosing-width__show-image__label">
+                        <input type="checkbox" checked={showImage} onChange={onCheckHandler} />
+                        Show image
+                    </label>
                 </div>
                 <Button type="button" className="right" disabled={isDisabled} onClick={onClickHanlder}>
                     Next step

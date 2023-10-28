@@ -42,4 +42,17 @@
 .generated-code-modal__button-holder {
     width: 100%;
     margin-top: 20px;
+    position: relative;
+}
+
+.generated-code-modal__button__tooltip {
+    z-index: -1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #d3d3d3;
+    border-radius: 8px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
 }

@@ -38,3 +38,13 @@
     align-items: center;
     gap: 10px;
 }
+
+.choosing-width__show-image {
+    padding: 10px 20px;
+}
+
+.choosing-width__show-image__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

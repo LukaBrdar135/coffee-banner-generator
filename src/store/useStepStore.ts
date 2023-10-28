@@ -12,6 +12,7 @@ type StepStore = {
     bannerWidth: string;
     bannerTitle: string;
     bannerDescription: string;
+    showImage: boolean;
     setCurrentStep: (step: number) => void;
     setCoffeeType: (coffeeType: CoffeeType | null) => void;
     setHotCoffee: (hotCoffeeData: CoffeeDataType[]) => void;
@@ -20,6 +21,7 @@ type StepStore = {
     setBannnerWidth: (bannerWidth: string) => void;
     setBannerTitle: (bannerTitle: string) => void;
     setBannerDescription: (bannerDescription: string) => void;
+    setShowImage: (showImage: boolean) => void;
     reset: () => void;
 };
 
@@ -32,6 +34,7 @@ const defaultState = {
     bannerWidth: '',
     bannerTitle: '',
     bannerDescription: '',
+    showImage: true,
 };
 
 export const useStepStore = create<StepStore>((set, get) => ({
@@ -59,6 +62,9 @@ export const useStepStore = create<StepStore>((set, get) => ({
     },
     setBannerDescription: (bannerDescription: string) => {
         set({ bannerDescription });
+    },
+    setShowImage: (showImage: boolean) => {
+        set({ showImage });
     },
     reset: () => {
         set({ ...defaultState, hotCoffee: get().hotCoffee, coldCoffee: get().coldCoffee });

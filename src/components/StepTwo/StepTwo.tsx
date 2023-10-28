@@ -25,7 +25,8 @@ const StepTwo: React.FC = () => {
     const onInputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCustomWidth(event.target.value);
         setBannnerWidth(Math.abs(parseInt(event.target.value)) + 'px');
-        if (event.target.value !== '') {
+
+        if (event.target.value !== '' && parseInt(event.target.value) !== 0) {
             setIsDisabled(false);
         } else {
             setIsDisabled(true);

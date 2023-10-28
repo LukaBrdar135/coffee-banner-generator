@@ -47,6 +47,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    width: fit-content;
 }
 
 @media (max-width: 480px) {
